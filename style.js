@@ -180,12 +180,16 @@ const Style = () => {
 
       #theme-heo #article-wrapper #notion-article ul,
       #theme-heo #article-wrapper #notion-article ol {
-        padding-left: 1.35rem;
-        margin: 0 0 var(--heo-article-block-gap);
+        padding-left: 1.25rem;
+        margin: 0 0 0.85rem;
       }
 
       #theme-heo #article-wrapper #notion-article li {
-        margin: 0.35em 0;
+        margin: 0.2em 0;
+      }
+
+      #theme-heo #article-wrapper #notion-article li > p {
+        margin-bottom: 0.35em;
       }
 
       #theme-heo #article-wrapper #notion-article blockquote {
