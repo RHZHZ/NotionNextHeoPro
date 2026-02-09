@@ -13,14 +13,11 @@
   <img width="940" height="515" alt="局部截取_20260209_174021" src="https://github.com/user-attachments/assets/5686d9d8-a28e-4947-8f9a-bf1b476f0fbb" />
 
 - **精致 UI 覆盖**：重塑了顶部导航、搜索页、Footer 底栏以及文章图片“画框感”。
-  1. 顶部导航重塑磨砂感
-    <img width="1370" height="56" alt="局部截取_20260209_174145" src="https://github.com/user-attachments/assets/6c83c897-f475-4708-b0f4-b4edf70c280f" />
-  2. 搜索页美化
-     <img width="970" height="446" alt="局部截取_20260209_174228" src="https://github.com/user-attachments/assets/b1ad00ad-80d6-4525-b8a2-91d49865c2f8" />
-  3. Footer 底栏去繁就简
-     <img width="2064" height="117" alt="局部截取_20260209_174322" src="https://github.com/user-attachments/assets/e1ddf0fc-4587-4660-b72f-cedcc1463ac5" />
-  4. 文章图片“画框感”
-     <img width="991" height="492" alt="局部截取_20260209_174549" src="https://github.com/user-attachments/assets/89a724a9-9b95-469c-afb2-c22eac6a3cd1" />
+
+  1. 顶部导航重塑磨砂感<img width="1370" height="56" alt="局部截取_20260209_174145" src="https://github.com/user-attachments/assets/6c83c897-f475-4708-b0f4-b4edf70c280f" />
+  2. 搜索页美化<img width="970" height="446" alt="局部截取_20260209_174228" src="https://github.com/user-attachments/assets/b1ad00ad-80d6-4525-b8a2-91d49865c2f8" />
+  3. Footer 底栏去繁就简<img width="2064" height="117" alt="局部截取_20260209_174322" src="https://github.com/user-attachments/assets/e1ddf0fc-4587-4660-b72f-cedcc1463ac5" />
+  4. 文章图片“画框感”<img width="991" height="492" alt="局部截取_20260209_174549" src="https://github.com/user-attachments/assets/89a724a9-9b95-469c-afb2-c22eac6a3cd1" />
 
 以上同样适配暗色模式。
 
