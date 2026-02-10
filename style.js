@@ -17,6 +17,13 @@ const Style = () => {
           0 6px 18px rgba(0, 0, 0, 0.06);
         --heo-shadow-md: 0 2px 6px rgba(0, 0, 0, 0.08),
           0 18px 40px rgba(0, 0, 0, 0.08);
+        --heo-shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.12),
+          0 30px 80px rgba(0, 0, 0, 0.12);
+        --heo-shadow-lg-dark: 0 8px 26px rgba(0, 0, 0, 0.55),
+          0 40px 100px rgba(0, 0, 0, 0.6);
+        --heo-border-subtle: rgba(0, 0, 0, 0.06);
+        --heo-border-subtle-dark: rgba(255, 255, 255, 0.09);
+        --heo-card-hover-translate: -2px;
         --heo-radius-sm: 10px;
         --heo-radius-md: 14px;
         --heo-radius-lg: 18px;
@@ -52,11 +59,15 @@ const Style = () => {
       }
 
       body {
-        background-color: #f5f5f7;
+        background-color: #f7f9fe;
+        background-image: radial-gradient(rgba(60, 132, 246, 0.03) 1px, transparent 0);
+        background-size: 24px 24px;
       }
 
       html.dark body {
         background-color: #0f1115;
+        background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 0);
+        background-size: 24px 24px;
       }
 
       #theme-heo {
@@ -138,9 +149,156 @@ const Style = () => {
         box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04), 0 14px 36px rgba(0, 0, 0, 0.45);
       }
 
+      /* 顶部导航栏：菜单项与右侧按钮发光效果 */
+      #theme-heo nav#nav a[aria-current='page'],
+      #theme-heo nav#nav a.active,
+      #theme-heo nav#nav button[aria-current='page'],
+      #theme-heo #nav-bar-swipe nav#nav-mobile a[aria-current='page'],
+      #theme-heo #nav-bar-swipe nav#nav-mobile a.active,
+      #theme-heo #nav-bar-swipe nav#nav-mobile a[aria-current='page'] > div,
+      #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer[aria-current='page'],
+      #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer.active {
+        position: relative;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.78) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(12px);
+        backdrop-filter: saturate(180%) blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.35) !important;
+        box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.3),
+          0 0 26px rgba(37, 99, 235, 0.55),
+          0 0 52px rgba(59, 132, 246, 0.25);
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.02em;
+      }
+
+      html.dark #theme-heo nav#nav a[aria-current='page'],
+      html.dark #theme-heo nav#nav a.active,
+      html.dark #theme-heo nav#nav button[aria-current='page'],
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile a[aria-current='page'],
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile a.active,
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile a[aria-current='page'] > div,
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer[aria-current='page'],
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer.active {
+        background: rgba(234, 179, 8, 0.72) !important;
+        -webkit-backdrop-filter: saturate(140%) blur(12px);
+        backdrop-filter: saturate(140%) blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 0 0 1px rgba(234, 179, 8, 0.3),
+          0 0 26px rgba(234, 179, 8, 0.5),
+          0 0 52px rgba(250, 204, 21, 0.2);
+        color: #000000 !important;
+        font-weight: 600 !important;
+      }
+
+      @media (hover: hover) {
+        /* 中间菜单项 hover */
+        #theme-heo #nav-bar-swipe nav#nav-mobile a:hover,
+        #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer:hover,
+        /* 右侧图标按钮 hover (针对 SearchButton, DarkModeButton, RandomPostButton 等) */
+        #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover {
+          border-radius: 999px;
+          background-color: rgba(37, 99, 235, 0.75) !important;
+          -webkit-backdrop-filter: saturate(180%) blur(10px);
+          backdrop-filter: saturate(180%) blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.3) !important;
+          box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4),
+            0 0 40px rgba(37, 99, 235, 0.2);
+          color: #ffffff !important;
+          transform: translateY(-1px);
+        }
+
+        /* 右侧图标内部特殊处理 (针对某些被包裹的图标) */
+        #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover i,
+        #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover svg {
+           color: #ffffff !important;
+           fill: #ffffff !important;
+           transform: scale(1.05);
+           transition: transform 0.2s ease;
+        }
+
+        html.dark #theme-heo #nav-bar-swipe nav#nav-mobile a:hover,
+        html.dark #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer:hover,
+        html.dark #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover {
+          background-color: rgba(234, 179, 8, 0.75) !important;
+          -webkit-backdrop-filter: saturate(140%) blur(10px);
+          backdrop-filter: saturate(140%) blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.15) !important;
+          box-shadow: 0 8px 20px rgba(234, 179, 8, 0.4),
+            0 0 40px rgba(234, 179, 8, 0.2);
+          color: #000000 !important;
+          transform: translateY(-1px);
+        }
+
+        html.dark #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover i,
+        html.dark #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:hover svg {
+           color: #000000 !important;
+           fill: #000000 !important;
+           transform: scale(1.05);
+        }
+      }
+
+      /* 下拉菜单容器：大圆角胶囊感与玻璃质感优化 */
+      #theme-heo #nav-bar-swipe nav#nav-mobile ul {
+        border-radius: 28px !important;
+        padding: 8px !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+        background: rgba(255, 255, 255, 0.82) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(190%) !important;
+        backdrop-filter: blur(22px) saturate(190%) !important;
+      }
+
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile ul {
+        background: rgba(27, 28, 32, 0.78) !important;
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+        -webkit-backdrop-filter: blur(22px) saturate(160%) !important;
+        backdrop-filter: blur(22px) saturate(160%) !important;
+      }
+
+      /* 下拉菜单项：同步为大圆角胶囊发光样式 */
+      #theme-heo #nav-bar-swipe nav#nav-mobile ul li {
+        border-radius: 20px !important;
+        margin: 4px 0 !important;
+        padding: 6px 16px !important;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+
+      #theme-heo #nav-bar-swipe nav#nav-mobile ul li:hover {
+        background: rgba(37, 99, 235, 1) !important;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3) !important;
+        color: #ffffff !important;
+      }
+
+      #theme-heo #nav-bar-swipe nav#nav-mobile ul li:hover a span {
+        color: #ffffff !important;
+      }
+
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile ul li:hover {
+        background: rgba(234, 179, 8, 1) !important;
+        box-shadow: 0 8px 20px rgba(234, 179, 8, 0.4) !important;
+        color: #000000 !important;
+      }
+
+      html.dark #theme-heo #nav-bar-swipe nav#nav-mobile ul li:hover a span {
+        color: #000000 !important;
+      }
+
+      #theme-heo nav#nav a:focus-visible,
+      #theme-heo nav#nav button:focus-visible,
+      #theme-heo #nav-bar-swipe nav#nav-mobile a:focus-visible,
+      #theme-heo #nav-bar-swipe nav#nav-mobile .cursor-pointer:focus-visible,
+      #theme-heo nav#nav .flex-shrink-0 .cursor-pointer:focus-visible {
+        outline: none;
+        border-radius: 999px;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.8),
+          0 0 20px rgba(59, 130, 246, 0.7);
+      }
+
       #theme-heo #wrapper-outer .article {
         background: var(--heo-surface) !important;
-        border: 1px solid var(--heo-border) !important;
+        border: 1px solid var(--heo-border-subtle) !important;
         border-radius: var(--heo-radius-lg) !important;
         box-shadow: var(--heo-shadow-sm);
         color: var(--heo-text);
@@ -161,35 +319,81 @@ const Style = () => {
       #theme-heo #article-wrapper #notion-article h2 {
         font-size: var(--heo-h2-size);
         line-height: 1.35;
-        margin: 2.2rem 0 0.85rem;
+        margin: 2.8rem 0 0.6rem !important;
         letter-spacing: -0.01em;
+        font-weight: 600;
       }
 
       #theme-heo #article-wrapper #notion-article h3 {
         font-size: var(--heo-h3-size);
         line-height: 1.4;
-        margin: 1.8rem 0 0.75rem;
+        margin: 2rem 0 0.5rem !important;
         letter-spacing: -0.005em;
+        font-weight: 600;
       }
 
       #theme-heo #article-wrapper #notion-article h4 {
         font-size: var(--heo-h4-size);
         line-height: 1.45;
-        margin: 1.4rem 0 0.6rem;
+        margin: 1.5rem 0 0.4rem !important;
       }
 
+
+      #theme-heo #article-wrapper #notion-article .notion-list {
+        margin-block-start: 0.2em !important;
+        margin-block-end: 0.8rem !important;
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-list-disc,
+      #theme-heo #article-wrapper #notion-article .notion-list-numbered {
+        padding-inline-start: 1rem !important;
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-list li {
+        margin-bottom: 0.25rem !important;
+        padding: 1px 0 !important;
+        line-height: var(--heo-article-line-height);
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-list li::marker {
+        color: var(--heo-text-tertiary);
+        font-size: 0.85em; /* 圆点小一点更精致 */
+      }
+
+      /* 链接与下划线优化：去网页化，更像 Apple 设计 */
+      #theme-heo #article-wrapper #notion-article .notion-link,
+      #theme-heo #article-wrapper #notion-article .notion-inline-underscore {
+        text-decoration: none !important;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        transition: border-color var(--heo-dur-fast) var(--heo-ease);
+      }
+
+      html.dark #theme-heo #article-wrapper #notion-article .notion-link,
+      html.dark #theme-heo #article-wrapper #notion-article .notion-inline-underscore {
+        border-bottom-color: rgba(255, 255, 255, 0.15);
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-link:hover {
+        border-bottom-color: currentColor;
+      }
+
+      /* 统一普通 ul/ol 的样式，保持一致性 */
       #theme-heo #article-wrapper #notion-article ul,
       #theme-heo #article-wrapper #notion-article ol {
-        padding-left: 1.25rem;
-        margin: 0 0 0.85rem;
+        padding-left: 1rem;
+        margin: 0.2rem 0 1rem;
       }
 
       #theme-heo #article-wrapper #notion-article li {
-        margin: 0.2em 0;
+        margin-bottom: 0.35rem;
       }
 
       #theme-heo #article-wrapper #notion-article li > p {
-        margin-bottom: 0.35em;
+        margin: 0 !important;
+      }
+
+      #theme-heo #article-wrapper #notion-article li::marker {
+        color: var(--heo-text-tertiary);
       }
 
       #theme-heo #article-wrapper #notion-article blockquote {
@@ -211,222 +415,6 @@ const Style = () => {
         font-size: 0.92em;
       }
 
-      /* Code blocks (Mac window style) */
-      #theme-heo #article-wrapper #notion-article .code-toolbar {
-        position: relative;
-        width: 100%;
-        margin: 0 0 var(--heo-article-block-gap);
-        border-radius: 14px;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        background: rgba(27, 28, 32, 0.94);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 18px 44px rgba(0, 0, 0, 0.18);
-        overflow: hidden;
-      }
-
-      html.dark #theme-heo #article-wrapper #notion-article .code-toolbar {
-        border-color: rgba(255, 255, 255, 0.12);
-        background: rgba(27, 28, 32, 0.72);
-        -webkit-backdrop-filter: saturate(140%) blur(12px);
-        backdrop-filter: saturate(140%) blur(12px);
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 18px 44px rgba(0, 0, 0, 0.45);
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar > .toolbar {
-        position: absolute;
-        top: 0;
-        right: 0;
-        height: 34px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 0 10px;
-        z-index: 12;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .toolbar-item > button {
-        font-family: var(--heo-font-sans);
-        font-size: 12px;
-        line-height: 1;
-        padding: 6px 8px;
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        background: rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.82);
-      }
-
-      html.dark #theme-heo #article-wrapper #notion-article .code-toolbar .toolbar-item > button {
-        border-color: rgba(255, 255, 255, 0.14);
-        background: rgba(255, 255, 255, 0.06);
-        color: var(--heo-text-secondary);
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .pre-mac {
-        position: absolute;
-        left: 12px;
-        top: 11px;
-        z-index: 13;
-        display: flex;
-        gap: 7px;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .pre-mac > span {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .pre-mac > span:nth-child(1) {
-        background: #ff5f57;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .pre-mac > span:nth-child(2) {
-        background: #febc2e;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .pre-mac > span:nth-child(3) {
-        background: #28c840;
-      }
-
-      #theme-heo #article-wrapper #notion-article pre,
-      #theme-heo #article-wrapper #notion-article pre.notion-code {
-        font-family: var(--heo-font-mono);
-        font-size: 0.92em;
-        line-height: 1.6;
-        margin: 0;
-        padding: 46px 1.1rem 1rem;
-        border-radius: 0;
-        border: none;
-        background: transparent;
-        color: rgba(255, 255, 255, 0.9);
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      /* Prism tokens on dark code background */
-      #theme-heo #article-wrapper #notion-article .code-toolbar code[class*='language-'],
-      #theme-heo #article-wrapper #notion-article .code-toolbar pre[class*='language-'] {
-        color: rgba(255, 255, 255, 0.9);
-        text-shadow: none;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.comment,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.prolog,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.doctype,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.cdata {
-        color: rgba(235, 235, 245, 0.46);
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.punctuation {
-        color: rgba(235, 235, 245, 0.6);
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.property,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.tag,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.boolean,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.number,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.constant,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.symbol,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.deleted {
-        color: #7ee787;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.selector,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.attr-name,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.string,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.char,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.builtin,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.inserted {
-        color: #a5d6ff;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.operator,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.entity,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.url,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.variable {
-        color: rgba(235, 235, 245, 0.75);
-        background: none;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.atrule,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.attr-value,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.keyword {
-        color: #ff7ab2;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.function,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.class-name {
-        color: #ffd479;
-      }
-
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.regex,
-      #theme-heo #article-wrapper #notion-article .code-toolbar .token.important {
-        color: #ffb86b;
-      }
-
-      /* Collapse (S1 minimal bar) */
-      #theme-heo #article-wrapper #notion-article .collapse-wrapper {
-        margin: 0 0 var(--heo-article-block-gap);
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-panel-wrapper {
-        border-radius: 14px;
-        border: 1px solid rgba(0, 0, 0, 0.08);
-        background: rgba(255, 255, 255, 0.55);
-        -webkit-backdrop-filter: saturate(160%) blur(10px);
-        backdrop-filter: saturate(160%) blur(10px);
-        overflow: hidden;
-      }
-
-      html.dark #theme-heo #article-wrapper #notion-article .collapse-panel-wrapper {
-        border-color: rgba(255, 255, 255, 0.12);
-        background: rgba(27, 28, 32, 0.6);
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-header {
-        width: 100%;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 12px;
-        cursor: pointer;
-        user-select: none;
-        border: none;
-        background: transparent;
-        color: var(--heo-text-secondary);
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-label {
-        font-family: var(--heo-font-sans);
-        font-size: 13px;
-        letter-spacing: 0.02em;
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-chevron {
-        width: 18px;
-        height: 18px;
-        transition: transform var(--heo-dur) var(--heo-ease), opacity var(--heo-dur-fast) var(--heo-ease);
-        opacity: 0.85;
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-panel-wrapper.is-expanded .collapse-chevron {
-        transform: rotate(180deg);
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-panel {
-        max-height: 0;
-        overflow: hidden;
-        border-top: 1px solid rgba(0, 0, 0, 0.06);
-        transition: max-height 320ms var(--heo-ease);
-      }
-
-      html.dark #theme-heo #article-wrapper #notion-article .collapse-panel {
-        border-top-color: rgba(255, 255, 255, 0.08);
-      }
-
-      #theme-heo #article-wrapper #notion-article .collapse-panel.is-expanded {
-        max-height: 2400px;
-      }
 
       /* Article Images (B-Plan: Apple-style frame) */
       #theme-heo #article-wrapper #notion-article .notion-asset-wrapper-image {
@@ -437,6 +425,21 @@ const Style = () => {
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 2px rgba(0, 0, 0, 0.02);
         transition: transform var(--heo-dur) var(--heo-ease),
           box-shadow var(--heo-dur) var(--heo-ease);
+        max-width: 100% !important;
+        min-width: 0 !important;
+        width: auto !important;
+        display: block;
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-asset-wrapper-image > div {
+        width: auto !important;
+        max-width: 100% !important;
+      }
+
+      #theme-heo #article-wrapper #notion-article .notion-asset-wrapper-image img {
+        width: auto !important;
+        max-width: 100% !important;
+        height: auto !important;
       }
 
       #theme-heo #article-wrapper #notion-article .notion-asset-wrapper-image img {
@@ -471,14 +474,18 @@ const Style = () => {
 
       html.dark #theme-heo #wrapper-outer .article {
         background: var(--heo-surface-dark) !important;
-        border-color: rgba(255, 255, 255, 0.08) !important;
+        border-color: var(--heo-border-subtle-dark) !important;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
       }
 
       @media (hover: hover) {
         #theme-heo #wrapper-outer .article:hover {
-          box-shadow: var(--heo-shadow-md);
-          transform: translateY(-1px);
+          box-shadow: var(--heo-shadow-lg);
+          transform: translateY(var(--heo-card-hover-translate));
+        }
+
+        html.dark #theme-heo #wrapper-outer .article:hover {
+          box-shadow: var(--heo-shadow-lg-dark);
         }
       }
 
@@ -497,6 +504,361 @@ const Style = () => {
 
       .scroll-hidden::-webkit-scrollbar {
         display: none;
+      }
+
+      /* CategoryBar 容器：磨砂玻璃质感与圆角 */
+      #theme-heo #category-bar {
+        background: rgba(255, 255, 255, 0.72) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(16px);
+        backdrop-filter: saturate(180%) blur(16px);
+        border: 1px solid rgba(0, 0, 0, 0.06) !important;
+        border-radius: 24px !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 10px 26px rgba(0, 0, 0, 0.06);
+        transition: all var(--heo-dur) var(--heo-ease);
+      }
+
+      html.dark #theme-heo #category-bar {
+        background: rgba(27, 28, 32, 0.75) !important;
+        -webkit-backdrop-filter: saturate(140%) blur(18px);
+        backdrop-filter: saturate(140%) blur(18px);
+        border-color: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      /* 分类项：同步发光胶囊样式 */
+      #theme-heo #category-bar .category-bar-item {
+        border-radius: 16px !important;
+        transition: all 0.25s var(--heo-ease) !important;
+        padding: 4px 12px !important;
+        margin: 0 4px !important;
+      }
+
+      #theme-heo #category-bar .category-bar-item:hover,
+      #theme-heo #category-bar .category-bar-item.selected {
+        background: rgba(37, 99, 235, 0.82) !important;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4), 0 0 1px rgba(37, 99, 235, 0.5);
+        color: #ffffff !important;
+        transform: translateY(-1px);
+      }
+
+      html.dark #theme-heo #category-bar .category-bar-item:hover,
+      html.dark #theme-heo #category-bar .category-bar-item.selected {
+        background: rgba(234, 179, 8, 0.85) !important;
+        box-shadow: 0 8px 20px rgba(234, 179, 8, 0.5), 0 0 1px rgba(234, 179, 8, 0.6);
+        color: #000000 !important;
+        transform: translateY(-1px);
+      }
+
+      @media (hover: hover) {
+        #theme-heo #category-bar:hover {
+          border-color: rgba(37, 99, 235, 0.3) !important;
+          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.08), 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+        html.dark #theme-heo #category-bar:hover {
+          border-color: rgba(234, 179, 8, 0.3) !important;
+          box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.08), 0 20px 48px rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      /* Hero section styles */
+      #theme-heo #hero .recent-post-top {
+        background: transparent !important;
+        border: 1px solid var(--heo-border-subtle) !important;
+        box-shadow: none !important;
+        transition: all var(--heo-dur) var(--heo-ease);
+      }
+
+      html.dark #theme-heo #hero .recent-post-top {
+        border-color: var(--heo-border-subtle-dark) !important;
+      }
+
+      #theme-heo #hero #banners,
+      #theme-heo #hero-right-wrapper #top-group > a > div {
+        background: var(--heo-surface) !important;
+        border: 1px solid var(--heo-border-subtle) !important;
+        box-shadow: var(--heo-shadow-sm);
+        transition: all var(--heo-dur) var(--heo-ease);
+      }
+
+      #theme-heo #hero-right-wrapper #today-card #card-body {
+        border: 1px solid var(--heo-border-subtle) !important;
+        box-shadow: var(--heo-shadow-sm);
+        transition: all var(--heo-dur) var(--heo-ease);
+      }
+
+      html.dark #theme-heo #hero #banners,
+      html.dark #theme-heo #hero-right-wrapper #top-group > a > div {
+        background: var(--heo-surface-dark) !important;
+        border-color: var(--heo-border-subtle-dark) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      html.dark #theme-heo #hero-right-wrapper #today-card #card-body {
+        border-color: var(--heo-border-subtle-dark) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      @media (hover: hover) {
+        #theme-heo #hero #banners:hover,
+        #theme-heo #hero-right-wrapper #top-group > a > div:hover,
+        #theme-heo #hero-right-wrapper #today-card #card-body:hover {
+          box-shadow: var(--heo-shadow-lg);
+          transform: translateY(var(--heo-card-hover-translate));
+        }
+        html.dark #theme-heo #hero #banners:hover,
+        html.dark #theme-heo #hero-right-wrapper #top-group > a > div:hover,
+        html.dark #theme-heo #hero-right-wrapper #today-card #card-body:hover {
+          box-shadow: var(--heo-shadow-lg-dark);
+        }
+      }
+
+      /* InfoCard v2 三段式结构优化 */
+      #theme-heo #sideRight .heo-infocard-v2 {
+        background: var(--heo-infocard-bg, linear-gradient(135deg, #4f65f0 0%, #a252ff 100%)) !important;
+        border: none !important;
+        padding: 1.5rem !important;
+        min-height: 20rem !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        position: relative !important;
+        transition: min-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), background 0.5s var(--heo-ease) !important;
+        overflow: hidden !important;
+      }
+
+      html.dark #theme-heo #sideRight .heo-infocard-v2 {
+        background: var(--heo-infocard-bg, linear-gradient(135deg, #f39c12 0%, #e67e22 100%)) !important;
+      }
+
+      /* 1. Header 样式 */
+      .heo-info-header {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 1rem;
+        z-index: 10;
+      }
+
+      .heo-info-greetings-pill {
+        background: rgba(255, 255, 255, 0.2) !important;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        color: white !important;
+        border-radius: 999px !important;
+        padding: 4px 16px !important;
+        white-space: nowrap !important;
+        font-size: 0.875rem;
+        width: auto !important;
+        height: auto !important;
+        transition: all 0.3s var(--heo-ease);
+      }
+
+      /* 2. Body 样式 */
+      .heo-info-body {
+        flex: 1;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 160px;
+      }
+
+      .heo-info-avatar-wrap {
+        opacity: 1;
+        transform: scale(1);
+        transition: all 0.4s var(--heo-ease);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .heo-info-avatar-wrap .rounded-full {
+        width: 120px !important;
+        height: 120px !important;
+        border: 4px solid rgba(255, 255, 255, 0.4);
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+        background: white;
+      }
+
+      /* 状态图标定位 (仿参考样式) */
+      .author-status {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+        width: 36px;
+        height: 36px;
+        background: white;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: transform 0.3s var(--heo-ease);
+      }
+
+      .author-status .g-status {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .heo-infocard-v2:hover .author-status {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      /* 状态图标定位 */
+      .author-status {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 32px;
+        height: 32px;
+        background: white;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        transition: transform 0.3s var(--heo-ease);
+      }
+
+      .heo-infocard-v2:hover .author-status {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .heo-info-announcement-wrap {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        opacity: 0;
+        transform: translateY(20px);
+        pointer-events: none;
+        transition: all 0.4s var(--heo-ease);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .heo-infocard-v2:hover .heo-info-avatar-wrap {
+        opacity: 0;
+        transform: scale(0.8) translateY(-20px);
+        position: absolute;
+      }
+
+      .heo-infocard-v2:hover .heo-info-announcement-wrap {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+        position: relative;
+      }
+
+      .heo-info-welcome-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .heo-info-emoji {
+        animation: wave 2.5s infinite;
+        transform-origin: 70% 70%;
+        display: inline-block;
+      }
+
+      /* 3. Footer 样式 - 对齐参考图 */
+      .heo-info-footer {
+        width: 100%;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .heo-info-footer-text {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .author-info__name {
+        line-height: 1.2;
+      }
+
+      .author-info__desc {
+        opacity: 0.8;
+      }
+
+      /* 按钮专用样式 */
+      .heo-info-social-btn, .heo-info-more-btn {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        width: 42px !important;
+        height: 42px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        transition: all 0.3s var(--heo-ease) !important;
+        cursor: pointer;
+        color: white !important;
+      }
+
+      .heo-info-social-btn:hover, .heo-info-more-btn:hover {
+        background: white !important;
+        color: #4f65f0 !important;
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Sidebar cards: only affect right sidebar (C plan) */
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white,
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white.dark\:bg-\[\#1e1e1e\],
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white.dark\:bg-\[\#1e1e1e\].dark\:text-white,
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl,
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl.lg\:p-6,
+      #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl.p-4 {
+        background: var(--heo-surface) !important;
+        border: 1px solid var(--heo-border-subtle) !important;
+        border-radius: var(--heo-radius-lg) !important;
+        box-shadow: var(--heo-shadow-sm);
+        -webkit-backdrop-filter: saturate(180%) blur(14px);
+        backdrop-filter: saturate(180%) blur(14px);
+      }
+
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white,
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.dark\:bg-\[\#1e1e1e\],
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.dark\:bg-\[\#1e1e1e\].dark\:text-white,
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl,
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl.lg\:p-6,
+      html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl.p-4 {
+        background: var(--heo-surface-dark) !important;
+        border-color: var(--heo-border-subtle-dark) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35), 0 16px 40px rgba(0, 0, 0, 0.45);
+      }
+
+      @media (hover: hover) {
+        #theme-heo #sideRight .wow.fadeInUp.border.bg-white:hover,
+        #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl:hover {
+          box-shadow: var(--heo-shadow-lg);
+          transform: translateY(var(--heo-card-hover-translate));
+        }
+
+        html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white:hover,
+        html.dark #theme-heo #sideRight .wow.fadeInUp.border.bg-white.rounded-xl:hover {
+          box-shadow: var(--heo-shadow-lg-dark);
+        }
       }
 
       /* Search page (Apple-style) */
@@ -628,7 +990,7 @@ const Style = () => {
 
       #theme-heo footer #color-transition {
         height: 48px;
-        background: linear-gradient(to bottom, #f5f5f7, transparent) !important;
+        background: linear-gradient(to bottom, transparent, #f9fafc) !important;
       }
 
       html.dark #theme-heo footer #color-transition {
@@ -639,8 +1001,10 @@ const Style = () => {
         height: auto !important;
         padding-top: 1.5rem !important;
         padding-bottom: 2rem !important;
-        background: transparent !important;
-        border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+        background: rgba(249, 250, 252, 0.8) !important;
+        -webkit-backdrop-filter: saturate(180%) blur(16px);
+        backdrop-filter: saturate(180%) blur(16px);
+        border-top: 1px solid rgba(0, 0, 0, 0.05) !important;
         color: var(--heo-text-tertiary);
         display: flex;
         flex-direction: column;
@@ -704,7 +1068,11 @@ const Style = () => {
       }
 
       html.dark #theme-heo footer #footer-bottom {
+        background: rgba(27, 28, 32, 0.68) !important;
+        -webkit-backdrop-filter: saturate(140%) blur(18px);
+        backdrop-filter: saturate(140%) blur(18px);
         border-top-color: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.06), 0 -14px 36px rgba(0, 0, 0, 0.45);
       }
 
       #theme-heo footer #footer-bottom a {

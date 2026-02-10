@@ -61,6 +61,9 @@ const CONFIG = {
   HEO_INFO_CARD_URL3: 'https://blog.csdn.net/qq_18837609',
   HEO_INFO_CARD_TEXT3: '了解更多',
 
+  // 个人资料卡头像右下角状态图标
+  HEO_INFO_CARD_STATUS_ICON: 'https://upload-bbs.miyoushe.com/upload/2025/08/04/125766904/e3433dc6f4f78a9257060115e339f018_1105042150723011388.png?x-oss-process=image/format,avif',
+
   // 用户技能图标
   HEO_GROUP_ICONS: [
     {
