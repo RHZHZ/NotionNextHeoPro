@@ -3,10 +3,11 @@
 这是一套为 NotionNext 的 Heo 主题深度定制的视觉补丁，旨在将主题风格转化为极简、精致的 macOS / Apple 官网质感。
 
 ## ✨ 核心特性
-
-- **智能环境色（新）**：文章页顶部背景支持根据封面图自动取色并压暗；侧边栏个人资料卡（InfoCard）在文章页内同步该环境色，非文章页保持默认蓝/黄。
 - **Apple 设计语言**：引入半透明玻璃拟态、1px 细描边与 macOS 系统级阴影。
-  <img width="1352" height="1067" alt="局部截取_20260209_173919" src="https://github.com/user-attachments/assets/7777f5c7-f08f-4c00-9663-a1354debf4d1" />
+  <img width="1791" height="1235" alt="局部截取_20260210_211014" src="https://github.com/user-attachments/assets/ec8dd4eb-f545-4f58-8dad-1e04a24ce61a" />
+
+- **智能环境色**：文章页顶部背景支持根据封面图自动取色并压暗；侧边栏个人资料卡（InfoCard）在文章页内同步该环境色，非文章页保持默认蓝/黄。
+  <img width="1828" height="1220" alt="局部截取_20260210_211136" src="https://github.com/user-attachments/assets/1081685b-a785-43eb-be07-e82fc48485b3" />
 
 - **深度排版优化**：针对中英文阅读优化的行高、字号层级与段落节奏。
   <img width="510" height="440" alt="局部截取_20260209_173800" src="https://github.com/user-attachments/assets/c70bfddf-bf77-460e-a8da-3952c19fc525" />
