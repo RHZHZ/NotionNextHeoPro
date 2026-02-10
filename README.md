@@ -30,17 +30,20 @@
 2.  **替换代码组件**：
     将补丁包中的 `PrismMac.js` 覆盖到项目的 `components/PrismMac.js`。
 3.  **更新配置文件**：
-    在你的 `blog.config.js` 中，确保以下配置已开启：
+    在你的 `blog.config.js` 或主题的 `config.js` 中，确保以下配置已按需设置：
     ```javascript
+    HEO_HERO_ENABLE: true,   // 开启/关闭英雄区 (首页顶部大卡)
     CODE_MAC_BAR: true,      // 开启 Mac 窗口三色点
     CODE_COLLAPSE: true,     // 开启代码折叠
     APPEARANCE: 'auto',      // 建议设为 auto 以体验完美的暗色模式适配
     ```
 4.  **可选配置**：
-    如果你想调整代码折叠的阈值，可以在配置中修改：
+    如果你想调整相关功能，可以在配置中修改：
     ```javascript
     // 只有超过 20 行的代码块才显示折叠条
-    CODE_COLLAPSE_MIN_LINES: 20 
+    CODE_COLLAPSE_MIN_LINES: 20,
+    // 隐藏英雄区
+    HEO_HERO_ENABLE: false 
     ```
 
 ## 🎨 视觉规范参考
