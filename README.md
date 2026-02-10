@@ -29,7 +29,11 @@
     将补丁包中的 `style.js` 覆盖到项目的 `themes/heo/style.js`。
 2.  **替换代码组件**：
     将补丁包中的 `PrismMac.js` 覆盖到项目的 `components/PrismMac.js`。
-3.  **更新配置文件（全局）**：
+3.  **替换英雄区开关文件**：
+    将补丁包中的 `Hero.js` 覆盖到项目的 `themes/heo/components/Hero.js`。
+4.  **替换首页分类栏开关文件**：
+    将补丁包中的 `index.js` 覆盖到项目的 `themes/heo/index.js`。
+5.  **更新配置文件（全局）**：
     在你的项目根目录 `blog.config.js` 中，确保以下全局配置已按需设置：
     ```javascript
     CODE_MAC_BAR: true,      // 开启 Mac 窗口三色点
@@ -37,13 +41,13 @@
     APPEARANCE: 'auto',      // 建议设为 auto 以体验完美的暗色模式适配
     ```
 
-4.  **更新主题配置（Heo 主题）**：
+6.  **更新主题配置（Heo 主题）**：
     在 `themes/heo/config.js` 中，按需设置以下主题配置：
     ```javascript
     HEO_HERO_ENABLE: true,              // 开启/关闭英雄区 (首页顶部大卡)
     HEO_HOME_CATEGORY_BAR_ENABLE: true, // 开启/关闭首页文章分类栏（英雄区下方）
     ```
-5.  **可选配置**：
+7.  **可选配置**：
     如果你想调整相关功能，可以在配置中修改：
     ```javascript
     // 只有超过 20 行的代码块才显示折叠条
