@@ -2,6 +2,8 @@
 
 这是一套为 NotionNext 的 Heo 主题深度定制的视觉补丁，旨在将主题风格转化为极简、精致的 macOS / Apple 官网质感。
 
+<img width="1470" height="948" alt="image" src="https://github.com/user-attachments/assets/35e9b621-0dee-45c5-86cb-8209c14f011c" />
+
 ## ✨ 核心特性
 - **Apple 设计语言**：引入半透明玻璃拟态、1px 细描边与 macOS 系统级阴影。
   <img width="1791" height="1235" alt="局部截取_20260210_211014" src="https://github.com/user-attachments/assets/ec8dd4eb-f545-4f58-8dad-1e04a24ce61a" />
@@ -62,6 +64,41 @@
     // 隐藏首页文章分类栏（英雄区下方）
     HEO_HOME_CATEGORY_BAR_ENABLE: false
     ```
+    
+**11. 灵动岛播放器安装与配置**
+    专为 NotionNext 定制的“有生命感”音频引擎。
+
+    <img width="1043" height="225" alt="image" src="https://github.com/user-attachments/assets/42c6bfab-ddb3-463a-b798-5d61c6a29ed8" />
+
+    **📂 核心文件清单**
+    请确保从 `heopro` 补丁包中拷贝以下 5 个核心文件到对应目录：
+    - `components/Player.js` (音频引擎)
+    - `components/DynamicIslandPlayer.js` (悬浮岛 UI)
+    - `components/InlineIslandAudio.js` (文章内嵌 UI)
+    - `pages/api/meting.js` (音频中转代理)
+    - `pages/api/audio-meta.js` (元数据字典代理)
+
+#### **🛠 安装步骤**
+1. **组件挂载**：在 `components/ExternalPlugins.js` 中引入并挂载 `DynamicIslandPlayer`。
+2. **NotionPage 适配**：在 `components/NotionPage.js` 的 `components` 映射中，将 `Audio` 指定为 `InlineIslandAudio`。
+3. **安全配置**：在部署环境（如 Vercel）中添加环境变量 `NOTION_ACCESS_TOKEN`，用于读取封面/歌词元数据。
+
+#### **⚙️ 配置文件 (blog.config.js / widget.config.js)**
+添加以下关键配置：
+```javascript
+// 全局开关
+MUSIC_PLAYER: true, 
+
+// 全局随机歌单 ID (逗号分隔)
+MUSIC_PLAYER_METING_ID: '2037842140,2037843139', 
+
+// 文章音频自动转换
+MUSIC_PLAYER_ARTICLE_AUDIO_CONVERT: true, 
+
+// 音频元数据库 ID (Notion 数据库)
+MUSIC_PLAYER_ARTICLE_META_DB_ID: ''
+```
+
 
 ## 🎨 视觉规范参考
 - **背景色**：Light `#f5f5f7` | Dark `#0f1115`
