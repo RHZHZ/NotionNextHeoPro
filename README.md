@@ -65,19 +65,16 @@
     HEO_HOME_CATEGORY_BAR_ENABLE: false
     ```
     
-**11. 灵动岛播放器安装与配置**
+8. **灵动岛播放器安装与配置**
     专为 NotionNext 定制的“有生命感”音频引擎。
-
     <img width="1043" height="225" alt="image" src="https://github.com/user-attachments/assets/42c6bfab-ddb3-463a-b798-5d61c6a29ed8" />
-
-    **📂 核心文件清单**
     请确保从 `heopro` 补丁包中拷贝以下 5 个核心文件到对应目录：
     - `components/Player.js` (音频引擎)
     - `components/DynamicIslandPlayer.js` (悬浮岛 UI)
     - `components/InlineIslandAudio.js` (文章内嵌 UI)
     - `pages/api/meting.js` (音频中转代理)
     - `pages/api/audio-meta.js` (元数据字典代理)
-
+    
 #### **🛠 安装步骤**
 1. **组件挂载**：在 `components/ExternalPlugins.js` 中引入并挂载 `DynamicIslandPlayer`。
 2. **NotionPage 适配**：在 `components/NotionPage.js` 的 `components` 映射中，将 `Audio` 指定为 `InlineIslandAudio`。
